@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Arduino editor and compiler - by Tasos Koufalis 4 Codebender</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="editor-compiler.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="main-wrapper">
+
+<div id="header-wrapper">
+	<h1 class=""> Codebender's Online Arduino editor/compiler </h1>
+</div>
+
+<div id="left-region" class="region">	
+	<div id="editor-wrapper">
+		<pre id="editor">/* Welcome to the Online Arduino editor/compiler! Brought to you by Codebender */ 
+		
+	// Initialize your variables here
+			
+		
+	void setup() {
+		// Initialize your inputs and outputs here
+			
+	}
+		
+	void loop() { 
+		// Write the contents of your loop routine here (Main funtionality)
+			
+	}
+		</pre>
+	</div>
+</div>
+
+<div id="right-region" class="region">
+	<div id="arduino-wrapper">
+		<select id="cb_cf_boards" class="form-control"></select>
+	</div>
+	
+	<div id="verification-wrapper">
+   		<button id="cb_cf_verify_btn" class="btn-primary">Verify code!</button>
+    	<p id="cb_cf_operation_output"></p>
+	</div>
+	
+	<div id="events-wrapper">
+		<label> Event messages: </label>
+		<div id="event_msg"></div>
+	</div>
+</div>
+
+
+	
+</div>
+<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="editor-compiler.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://codebender.cc/embed/compilerflasher.js" type="text/javascript"></script>
+
+ <script type="text/javascript">
+	function getFiles(){
+		return {"sketch.ino": $("#editor").val() }
+	}
+	
+	$(document).ready(function(){
+		compilerflasher = new compilerflasher(getFiles);
+		
+		compilerflasher.on("pre_verify", function(){
+			$("#event_msg").append('pre_verify event fired!<br/><br/>')
+		});
+		
+		compilerflasher.on("verification_succeed", function(binary_size){
+			$("#cb_cf_operation_output").addClass("btn-success");
+			$("#event_msg").append('verification_succeed event fired! Sketch size: '+binary_size+"<br/><br/>")
+		});
+
+		compilerflasher.on("verification_failed", function(error_output){
+			$("#cb_cf_operation_output").addClass("btn-danger");
+			$("#event_msg").append("verification_failed event fired! \nCompilation error: <pre>"+error_output+"</pre><br/><br/>")
+		});
+	});
+</script>
+</body>
+
+</html>

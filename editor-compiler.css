@@ -1,0 +1,120 @@
+/* Main page  */
+body {
+	background-image:url('https://codebender.cc/old_mathematics.png');
+}
+
+#main-wrapper {
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+
+}
+
+/* Header */
+#header-wrapper {
+	padding:0px 10px;
+}
+
+#header-wrapper h1 {
+	color:#777;
+	text-align:center;
+	width:100%;
+	max-width:900px;
+	margin:10px auto;
+	border-top:2px solid #777;
+	border-bottom:2px solid #777;
+	text-shadow:2px 1px 0px #ccc;
+}
+
+/* Page regions */
+.region {
+	width:100%;
+}
+
+/* Editor */
+#editor-wrapper {
+    top: 0;
+    left: 0;
+    width:100%;
+    max-width:960px;
+    height:100%;
+    padding:5px;
+}
+
+#editor { 
+    width:100%;
+    height:100%;
+    min-height:400px;
+}
+
+
+/* Arduino Selection  menu */
+#arduino-wrapper {
+	top:0;	
+	padding:5px 10px;
+	text-align:center;
+}
+
+/* Verification */
+#verification-wrapper {
+	text-align:center;
+	margin-top:10px;
+}
+
+#cb_cf_operation_output {
+	text-align:center;
+	font-weight:bold;
+	width:100%;
+	max-width:400px;
+	word-wrap:break-word;
+	margin:20px auto;
+}
+
+#cb_cf_operation_output.btn-danger, #cb_cf_operation_output.btn-success {
+	max-width:180px;
+	padding:5px 0;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+}
+
+/* Events */
+#events-wrapper {
+	text-align:center;
+}
+
+#events-wrapper #event_msg pre {
+	text-align:left;
+	margin-top:10px;
+	margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*-------------------- Style for laptops and desktops -------------------*/
+@media screen and (min-width: 970px){
+
+#header-wrapper h1 {
+	font-size:28px;
+}
+
+/* Page regions */
+.region {
+	width:49.5%;
+	height:100%;
+	float:left;
+}
+
+/* Editor */
+#editor-wrapper {
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%; 
+    padding:5px;
+}
+
+} 
